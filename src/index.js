@@ -5,18 +5,6 @@ addEventListener("fetch", (event) => {
 });
 
 const dockerHub = "https://registry-1.docker.io";
-
- 
-// return docs
-if (url.pathname === "/") {
-  return new Response(HTML, {
-    status: 200,
-    headers: {
-      "content-type": "text/html"
-    }
-  });
-}
-
 const routes = {
   // production
   "docker.suimg.fun": dockerHub,
@@ -55,6 +43,15 @@ async function handleRequest(request) {
       }
     );
   }
+  // return docs
+if (url.pathname === "/") {
+  return new Response(HTML, {
+    status: 200,
+    headers: {
+      "content-type": "text/html"
+    }
+  });
+}
   const isDockerHub = upstream == dockerHub;
   const authorization = request.headers.get("Authorization");
   if (url.pathname == "/v2/") {
