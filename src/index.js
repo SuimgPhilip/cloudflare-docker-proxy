@@ -1,14 +1,15 @@
+import HTML from './index.html'
 addEventListener("fetch", (event) => {
   event.passThroughOnException();
   event.respondWith(handleRequest(event.request));
 });
 
 const dockerHub = "https://registry-1.docker.io";
-import DOCS from './index.html'
+
  
 // return docs
 if (url.pathname === "/") {
-  return new Response(DOCS, {
+  return new Response(HTML, {
     status: 200,
     headers: {
       "content-type": "text/html"
